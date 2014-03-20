@@ -1,0 +1,28 @@
+server {
+  listen <%= node['sleepers']['http_port'] %>;
+  server_name <%= @server_name %>;
+  root <%= @root %>;
+  access_log  <%= @access_log %>;
+  error_log <%= @error_log %>;
+
+  <% if @ssl %>
+    listen <%= node['sleepers']['https_port'] %> ssl;
+    ssl_certificate <%= @ssl['cert'] %>
+    ssl_certificate_key <%= @ssl['key'] %>
+  <% end %>
+
+  location / {
+    try_files $uri @proxy;
+  }
+
+  location @proxy {
+    proxy_pass <%= @upstream %>;
+    proxy_redirect off;
+
+    proxy_set_header  Host                $http_host;
+    proxy_set_header  X-Real-IP           $remote_addr;
+    proxy_set_header  X-Forwarded-For     $proxy_add_x_forwarded_for;
+
+    client_max_body_size 10m;
+  }
+}
