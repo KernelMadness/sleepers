@@ -1,4 +1,4 @@
-include_recipe 'postgresql::server' unless node['sleepers']['apps'].find {|app, params| params['postgres'] == 'true'}.nil?
+include_recipe 'postgresql::server' if node['sleepers']['apps'].find {|app, params| params['postgres'] == 'true'}
 
 node['sleepers']['apps'].each_with_index do |(app, params), index|
   if params['postgres'] == 'true'

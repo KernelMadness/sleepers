@@ -6,3 +6,7 @@ rbenv_ruby node['sleepers']['ruby-version'] do
 end
 
 rbenv_gem 'bundler'
+
+ohai "reload" do
+  action :reload
+end

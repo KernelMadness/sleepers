@@ -1,4 +1,4 @@
-include_recipe 'nginx' unless node['sleepers']['apps'].find {|app, params| params['domains'] == 'true'}.nil?
+include_recipe 'nginx'
 
 template ::File.join(node['nginx']['dir'], 'conf.d', 'sleepers.conf') do
   source 'nginx_sleepers.conf.erb'
