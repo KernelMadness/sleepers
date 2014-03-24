@@ -6,8 +6,12 @@ node['sleepers']['apps'].each do |app, config|
     shell '/bin/bash'
     ssh_keys config['ssh_keys']
   end
+
+  link ::File.join(node['user']['home_root'], app, '.ruby') do
+    to ::File.join(node['ruby_build']['default_ruby_base_path'], node['sleepers']['ruby-version'])
+  end
 end
 
-group 'rbenv' do
+group 'sleepers' do
   members node['sleepers']['apps'].keys
 end

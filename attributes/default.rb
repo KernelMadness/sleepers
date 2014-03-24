@@ -20,4 +20,4 @@ default['sleepers']['app'] = {
     'config_files' => {}
 }
 default['postgresql']['version'] = 9.3
-default['bluepill']['bin'] = '/opt/rbenv/shims/bluepill'
+default['ruby-build']['upgrade'] = 'sync'

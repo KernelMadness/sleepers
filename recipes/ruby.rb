@@ -1,12 +1,11 @@
-include_recipe "rbenv::default"
-include_recipe "rbenv::ruby_build"
+include_recipe 'ruby_build'
 
-rbenv_ruby node['sleepers']['ruby-version'] do
-  global true
+ruby_build_ruby node['sleepers']['ruby-version']
+
+template '/etc/profile.d/ruby.sh' do
+  source 'ruby.sh'
 end
 
-rbenv_gem 'bundler'
-
-ohai "reload" do
-  action :reload
+gem_package 'bundler' do
+  gem_binary ::File.join(node['ruby_build']['default_ruby_base_path'], node['sleepers']['ruby-version'], 'bin', 'gem')
 end

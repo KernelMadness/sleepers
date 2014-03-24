@@ -4,7 +4,7 @@ include_recipe "sudo"
 ::Chef::Recipe.send(:include, Sleepers::Helpers)
 
 sudo 'bluepill' do
-  group 'rbenv'
+  group 'sleepers'
   commands ['start','stop','restart'].map {|action| "#{node['bluepill']['bin']} #{action}*"}
   nopasswd true
 end
