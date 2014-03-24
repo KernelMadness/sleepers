@@ -11,7 +11,7 @@ server {
     ssl_certificate_key <%= @ssl['key'] %>
   <% end %>
 
-  location / {
+  location <%= @location %> {
     try_files $uri @proxy;
   }
 

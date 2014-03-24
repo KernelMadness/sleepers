@@ -12,11 +12,12 @@ default['sleepers']['nginx_vhosts_dir'] = ::File.join(node['nginx']['dir'], 'app
 default['sleepers']['nginx_log_dir'] = ::File.join(node['nginx']['log_dir'], 'apps')
 default['sleepers']['create_dirs'] = ['www', 'www/shared', 'www/shared/config', 'www/shared/pids']
 default['sleepers']['app'] = {
-    'web'       => 'false',
-    'postgres'  => 'false',
-    'pg_password' => nil,
-    'ssh_keys'  => [],
-    'processes' => {},
+    'domains'      => nil,
+    'location'     => '/',
+    'postgres'     => 'false',
+    'pg_password'  => nil,
+    'ssh_keys'     => [],
+    'processes'    => {},
     'config_files' => {}
 }
 default['postgresql']['version'] = 9.3
