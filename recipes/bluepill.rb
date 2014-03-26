@@ -5,7 +5,7 @@ include_recipe "sudo"
 
 sudo 'bluepill' do
   group 'sleepers'
-  commands ['start','stop','restart'].map {|action| "#{node['bluepill']['bin']} #{action}*"}
+  commands node['sleepers']['apps'].keys.map {|app| "/usr/sbin/service bluepill-#{app} *" }
   nopasswd true
 end
 

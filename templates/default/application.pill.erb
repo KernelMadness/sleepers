@@ -9,11 +9,14 @@ Bluepill.application('<%= @app_name %>') do |app|
     process.pid_file = '<%= pid_file(@app_name, proc_name) %>'
 
     process.start_command = '<%= start_command_with_port(params['start'], @port) %>'
-    #process.stop_command = "kill -QUIT {{PID}}"
-    #process.restart_command = "kill -USR2 {{PID}}"
+    process.stop_signals = [:quit, 15.seconds, :term, 5.seconds, :kill]
+
+    <% if params['restart'] %>
+      process.restart_command = '<%= params['restart'] %>'
+    <% end %>
 
     process.start_grace_time = 10.seconds
-    process.stop_grace_time = 10.seconds
+    process.stop_grace_time = 30.seconds
     process.restart_grace_time = 10.seconds
   end
   <% end %>

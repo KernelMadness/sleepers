@@ -22,3 +22,4 @@ default['sleepers']['app'] = {
 }
 default['postgresql']['version'] = 9.3
 default['ruby-build']['upgrade'] = 'sync'
+default['authorization']['sudo']['include_sudoers_d'] = true
