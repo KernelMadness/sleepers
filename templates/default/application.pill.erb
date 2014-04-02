@@ -1,5 +1,9 @@
 ENV['PATH'] = "/home/<%= @app_name %>/.ruby/bin:#{ENV['PATH']}"
 
+<% @env.each do |key, value| %>
+ENV['<%= key %>'] = '<%= value %>'
+<% end %>
+
 Bluepill.application('<%= @app_name %>') do |app|
 
   app.working_dir = '<%= @work_dir %>'

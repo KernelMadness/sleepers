@@ -14,7 +14,8 @@ node['sleepers']['apps'].each_with_index do |(app, params), index|
     :app_name => app,
     :port => app_port(index),
     :processes => params['processes'],
-    :work_dir => work_dir(app)
+    :work_dir => work_dir(app),
+    :env => params['env']
   }
 
   template ::File.join(node['bluepill']['conf_dir'], app + '.pill') do

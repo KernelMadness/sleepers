@@ -18,7 +18,8 @@ default['sleepers']['app'] = {
     'pg_password'  => nil,
     'ssh_keys'     => [],
     'processes'    => {},
-    'config_files' => {}
+    'config_files' => {},
+    'env'          => {}
 }
 default['postgresql']['version'] = 9.3
 default['ruby-build']['upgrade'] = 'sync'
