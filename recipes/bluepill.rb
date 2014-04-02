@@ -21,6 +21,7 @@ node['sleepers']['apps'].each_with_index do |(app, params), index|
     source 'application.pill.erb'
     helpers(Sleepers::Helpers)
     variables(options)
+    notifies :reload, "bluepill_service[#{app}]"
   end
 
   bluepill_service app do

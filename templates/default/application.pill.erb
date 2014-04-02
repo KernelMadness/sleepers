@@ -12,9 +12,12 @@ Bluepill.application('<%= @app_name %>') do |app|
     process.stop_signals = [:quit, 15.seconds, :term, 5.seconds, :kill]
 
     <% if params['restart'] %>
-      process.restart_command = '<%= params['restart'] %>'
+    process.restart_command = '<%= params['restart'] %>'
     <% end %>
 
+    <% if params['daemonize'] %>
+    process.daemonize = <%= params['daemonize'] %>
+    <% end %>
     process.start_grace_time = 10.seconds
     process.stop_grace_time = 30.seconds
     process.restart_grace_time = 10.seconds
