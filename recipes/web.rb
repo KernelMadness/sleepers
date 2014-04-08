@@ -16,7 +16,8 @@ node['sleepers']['apps'].each_with_index do |(app, params), index|
     :access_log => access_log(app),
     :error_log => error_log(app),
     :upstream => 'http://127.0.0.1:' + app_port(index).to_s,
-    :location => params['location']
+    :location => params['location'],
+    :ssl => params['ssl']
   }
 
   template ::File.join(node['sleepers']['nginx_vhosts_dir'], app) do

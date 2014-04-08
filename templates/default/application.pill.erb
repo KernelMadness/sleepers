@@ -22,7 +22,7 @@ Bluepill.application('<%= @app_name %>') do |app|
     <% if params['daemonize'] %>
     process.daemonize = <%= params['daemonize'] %>
     <% end %>
-    process.start_grace_time = 10.seconds
+    process.start_grace_time = 30.seconds
     process.stop_grace_time = 30.seconds
     process.restart_grace_time = 10.seconds
   end

@@ -7,8 +7,8 @@ server {
 
   <% if @ssl %>
     listen <%= node['sleepers']['https_port'] %> ssl;
-    ssl_certificate <%= @ssl['cert'] %>
-    ssl_certificate_key <%= @ssl['key'] %>
+    ssl_certificate <%= @ssl['cert'] %>;
+    ssl_certificate_key <%= @ssl['key'] %>;
   <% end %>
 
   location <%= @location %> {
