@@ -18,7 +18,7 @@ node['sleepers']['apps'].each_with_index do |(app, params), index|
         'adapter' => 'postgresql',
         'database'=> db,
         'host' => '127.0.0.1',
-        'username' => app,
+        'user' => app,
         'password' => pw
       }
     }
